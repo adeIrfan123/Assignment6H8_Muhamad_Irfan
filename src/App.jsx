@@ -13,20 +13,20 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://www.omdbapi.com/?apikey=2545c740&s=harry potter")
+      .get("http://www.omdbapi.com/?apikey=&s=harry potter")
       .then((response) => {
         setMovies(response.data.Search);
       });
-  }, []);
-  const fetchMovies = async () => {
-    const response = await axios.get(
-      `http://www.omdbapi.com/?apikey=2545c740&s=${searchQuery}`
-    );
-    setMovies(response.data.Search);
-  };
-  if (searchQuery) {
-    fetchMovies();
-  }
+    const fetchMovies = async () => {
+      const response = await axios.get(
+        `http://www.omdbapi.com/?apikey=&s=${searchQuery}`
+      );
+      setMovies(response.data.Search);
+    };
+    if (searchQuery) {
+      fetchMovies();
+    }
+  }, [searchQuery]);
 
   return (
     <>
